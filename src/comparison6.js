@@ -107,7 +107,7 @@ const result = await Playlist
 // .find({videos : {$gte : 25}})
 // .find({videos : {$lt : 30}})
 // .find({videos : {$lte : 30}})
-// .find({ctype : {$in : ["Back End"] }})
+// .find({ctype : "Back End" }})
 .find({ctype : {$in : ["Back End", "Database"] }})
 .select({name : 1})
 // .limit(1);

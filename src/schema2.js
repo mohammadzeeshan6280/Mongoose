@@ -33,5 +33,5 @@ const playSchema = new mongoose.Schema({
 // provides an interface to the database for creating,
 // querying, updating, deleting records, etc.
 
-//collection creation
+//collection creation -> Playlist collection name
 const Playlist = new mongoose.model("Playlist",playSchema);
