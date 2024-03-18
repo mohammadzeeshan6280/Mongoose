@@ -118,6 +118,4 @@ console.log(result)
 }
 }
 
-
-
 getDocument();
