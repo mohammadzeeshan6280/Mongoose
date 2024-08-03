@@ -33,33 +33,32 @@ const playSchema = new mongoose.Schema({
 
 // Vaildation on Mongoose
 const playSchema = new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      unique : true,
-      lowercase : true,
-      uppercase : true,
-    trim : true,
-    minlength : 2,
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    uppercase: true,
+    trim: true,
+    minlength: 2,
     // minlength : [2, "Minimum 2 Letters"],
-    maxlength : 20
-    },
-    // ctype: String,
-    ctype: {
-       type :  String,
-       required : true,
-       lowercase : true,
-       enum : ["frontend", "backend", "database"]
-    },
-    videos: Number,
-    author: String,
-    active: Boolean,
-    date: {
-      type: Date,
-      default: Date.now,
-      
-    },
-  });
+    maxlength: 20,
+  },
+  // ctype: String,
+  ctype: {
+    type: String,
+    required: true,
+    lowercase: true,
+    enum: ["frontend", "backend", "database"],
+  },
+  videos: Number,
+  author: String,
+  active: Boolean,
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
 // A Mongoose model is a wrapper in the Mongoose schema.
 // A Mongoose schema defines the structure of the document
@@ -86,14 +85,14 @@ const reactPlaylist = new Playlist({
 const createDocument = async () => {
   try {
     const mongoPlaylist = new Playlist({
-        // name: "Mongo DB",
-        // name: "   Mongo DB   ",
-        name: "Mongo DB",
-        ctype: "database",
-        videos: 30,
-        author: "Mohammad Zeeshan",
-        active: true,
-      });
+      // name: "Mongo DB",
+      // name: "   Mongo DB   ",
+      name: "Mongo DB",
+      ctype: "database",
+      videos: 30,
+      author: "Mohammad Zeeshan",
+      active: true,
+    });
     const result = await Playlist.insertMany([mongoPlaylist]);
     console.log(result);
   } catch (err) {
@@ -103,26 +102,24 @@ const createDocument = async () => {
 createDocument();
 
 const getDocument = async () => {
-    try {
-const result = await Playlist
+  try {
+    const result = await Playlist
 
-// .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
-.find({author: "Mohammad Zeeshan"} )
-.select({name : 1})
-// .countDocuments()
-// .sort()
-// .sort("name : 1")
-.sort({name : -1})
-// .limit(1);
-console.log(result)
-
-} catch(err){
-    console.log(err)
-}
-}
+      // .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
+      .find({ author: "Mohammad Zeeshan" })
+      .select({ name: 1 })
+      // .countDocuments()
+      // .sort()
+      // .sort("name : 1")
+      .sort({ name: -1 });
+    // .limit(1);
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // getDocument();
-
 
 /*
 // Update the document
@@ -143,22 +140,24 @@ updateDocument("65b4f3a29743297cc398fb64");
 
 // Update the document
 const updateDocument = async (_id) => {
-    try{
-        const result = await  Playlist.findByIdAndUpdate({_id},{
-            $set : {
-                name : "NODE JavaScript"
-            }
-         
-        }, {
-            new : true // new data show
-        });
-        console.log(result)
-    }catch(err){
-console.log(err)
-    }
-}
+  try {
+    const result = await Playlist.findByIdAndUpdate(
+      { _id },
+      {
+        $set: {
+          name: "NODE JavaScript",
+        },
+      },
+      {
+        new: true, // new data show
+      }
+    );
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 // updateDocument("65b4f3a29743297cc398fb64");
-
 
 /*
 // Detele the document
@@ -175,18 +174,11 @@ deleteDocument("65b4f9d893b879f4393ae259")
 */
 
 const deleteDocument = async (_id) => {
-    try{
-        const result = await Playlist.findByIdAndDelete({_id});
-      console.log(result)
-    } catch(err){
-console.log(err)
-    }
-
-}
+  try {
+    const result = await Playlist.findByIdAndDelete({ _id });
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 // deleteDocument("65b4f5c8aec83967fe2c1742")
-
-
-
-
-
-

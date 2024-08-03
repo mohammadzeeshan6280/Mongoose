@@ -49,7 +49,7 @@ const reactPlaylist = new Playlist({
 
 // reactPlaylist.save();
 */
-
+// Multiple Document Insert in Mongoose
 const createDocument = async () => {
   try {
     const htmlPlaylist = new Playlist({

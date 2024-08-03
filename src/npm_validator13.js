@@ -76,7 +76,7 @@ const playSchema = new mongoose.Schema({
       if (!validator.isEmail(value)) {
         throw new Error("Email is inValid");
       }
-    }
+    },
   },
   active: Boolean,
   date: {

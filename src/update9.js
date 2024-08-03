@@ -59,7 +59,7 @@ const createDocument = async () => {
       author: "Mohammad Zeeshan",
       active: true,
     });
-    
+
     const cssPlaylist = new Playlist({
       name: "CSS",
       ctype: "Front End",
@@ -92,7 +92,13 @@ const createDocument = async () => {
       active: true,
     });
 
-    const result = await Playlist.insertMany([htmlPlaylist, cssPlaylist, mongoPlaylist, nodePlaylist, expressPlaylist]);
+    const result = await Playlist.insertMany([
+      htmlPlaylist,
+      cssPlaylist,
+      mongoPlaylist,
+      nodePlaylist,
+      expressPlaylist,
+    ]);
     console.log(result);
   } catch (err) {
     console.log(err);
@@ -101,26 +107,24 @@ const createDocument = async () => {
 // createDocument();
 
 const getDocument = async () => {
-    try {
-const result = await Playlist
+  try {
+    const result = await Playlist
 
-// .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
-.find({author: "Mohammad Zeeshan"} )
-.select({name : 1})
-// .countDocuments()
-// .sort()
-// .sort("name : 1")
-.sort({name : -1})
-// .limit(1);
-console.log(result)
-
-} catch(err){
-    console.log(err)
-}
-}
+      // .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
+      .find({ author: "Mohammad Zeeshan" })
+      .select({ name: 1 })
+      // .countDocuments()
+      // .sort()
+      // .sort("name : 1")
+      .sort({ name: -1 });
+    // .limit(1);
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 // getDocument();
-
 
 /*
 // Update the document
@@ -141,21 +145,21 @@ updateDocument("65b4f3a29743297cc398fb64");
 
 // Update the document
 const updateDocument = async (_id) => {
-    try{
-        const result = await  Playlist.findByIdAndUpdate({_id},{
-            $set : {
-                name : "NODE JavaScript"
-            }
-         
-        }, {
-            new : true // new data show
-        });
-        console.log(result)
-    }catch(err){
-console.log(err)
-    }
-}
+  try {
+    const result = await Playlist.findByIdAndUpdate(
+      { _id },
+      {
+        $set: {
+          name: "NODE JavaScript",
+        },
+      },
+      {
+        new: true, // new data show
+      }
+    );
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 updateDocument("65b4f3a29743297cc398fb64");
-
-
-

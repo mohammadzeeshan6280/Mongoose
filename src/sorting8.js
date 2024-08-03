@@ -59,7 +59,7 @@ const createDocument = async () => {
       author: "Mohammad Zeeshan",
       active: true,
     });
-    
+
     const cssPlaylist = new Playlist({
       name: "CSS",
       ctype: "Front End",
@@ -92,7 +92,13 @@ const createDocument = async () => {
       active: true,
     });
 
-    const result = await Playlist.insertMany([htmlPlaylist, cssPlaylist, mongoPlaylist, nodePlaylist, expressPlaylist]);
+    const result = await Playlist.insertMany([
+      htmlPlaylist,
+      cssPlaylist,
+      mongoPlaylist,
+      nodePlaylist,
+      expressPlaylist,
+    ]);
     console.log(result);
   } catch (err) {
     console.log(err);
@@ -101,24 +107,20 @@ const createDocument = async () => {
 // createDocument();
 
 const getDocument = async () => {
-    try {
-const result = await Playlist
-
-// .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
-.find({author: "Mohammad Zeeshan"} )
-.select({name : 1})
-// .countDocuments()
-// .sort()
-// .sort("name : 1")
-.sort({name : -1})
-// .limit(1);
-console.log(result)
-
-} catch(err){
-    console.log(err)
-}
-}
-
-
+  try {
+    const result = await Playlist
+      // .find({$and : [ {ctype: "Back End"}, {author: "Mohammad Zeeshan"} ] })
+      .find({ author: "Mohammad Zeeshan" })
+      .select({ name: 1 })
+      // .countDocuments()
+      // .sort()
+      // .sort("name : 1")
+      .sort({ name: -1 });
+    // .limit(1);
+    console.log(result);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 getDocument();

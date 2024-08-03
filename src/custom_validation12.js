@@ -55,7 +55,7 @@ const playSchema = new mongoose.Schema({
     type: Number,
     //   validate(value){
     //     if (value < 0) {
-    //         throw new Error('videos cournt should not be negative')
+    //         throw new Error('videos count should not be negative')
     //     }
     //   }
     validate: {
@@ -63,7 +63,7 @@ const playSchema = new mongoose.Schema({
         return value.length < 0;
       },
       message: "value count should not be negative",
-    }
+    },
   },
 
   author: String,
